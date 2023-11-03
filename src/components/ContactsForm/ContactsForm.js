@@ -16,7 +16,10 @@ const schema = yup.object().shape({
   name: yup.string().required('It is required field'),
   number: yup
     .string()
-    .matches(/^\+?3?8?(0\d{9})$/, 'Wrong phone number')
+    .matches(
+      /^\+?3?8?(0\d{9})$/,
+      'Have to start with 380 or 0 and containe at least 10 symbols'
+    )
     .required('It is required field'),
 });
 
@@ -54,7 +57,7 @@ export const ContactsForm = () => {
 
         <Label>
           Number
-          <Input type="text" name="number" placeholder="Example: 099775544" />
+          <Input type="text" name="number" placeholder="Example: 0997755446" />
           <ErrorMessage name="number">
             {msg => <StyledErrorMessage>{msg}</StyledErrorMessage>}
           </ErrorMessage>
